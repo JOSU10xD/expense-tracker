@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@chakra-ui/react": "^2.4.4",
+    "@chakra-ui/react": "^2.10.9",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "cra-template": "1.2.0",
-    "firebase": "^11.3.0",
-    "framer-motion": "^12.4.0",
+    "firebase": "^11.8.1",
+    "framer-motion": "^12.12.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.5",
+    "react-router-dom": "^7.6.1",
     "react-scripts": "5.0.1",
-    "recharts": "^2.15.1"
+    "recharts": "^2.15.3"
   },
   "scripts": {
     "start": "react-scripts start",
