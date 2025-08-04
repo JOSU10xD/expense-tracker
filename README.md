@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# 💰 Expense Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Flutter-inspired React application to track income and expenses in real time, with user authentication and persistent storage via Firebase.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Overview
 
-### `npm start`
+The **Expense Tracker** is a responsive React web app that lets users:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Log income and expenses** with categories and timestamps
+* **View a running balance** and transaction history
+* **Authenticate** via Firebase Authentication
+* **Persist data** in Firebase Firestore
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🏗️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **React** (with Hooks & Context API)
+* **Firebase**
 
-### `npm run build`
+  * Authentication (Email/Password)
+  * Firestore Database
+* **React Router** for client-side routing
+* **Styled Components** / CSS Modules for styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔥 Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **User Sign-up & Login**
+* **Add/Edit/Delete Transactions** (Income & Expense)
+* **Real-time Balance Calculation**
+* **Transaction History** with date filtering
+* **Responsive Design** for mobile & desktop
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️ Installation & Running
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the repo**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```sh
+   git clone https://github.com/JOSU10xD/expense-tracker.git
+   cd expense-tracker
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Install dependencies**
 
-## Learn More
+   ```sh
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Configure Firebase**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   * Copy your Firebase config into `src/firebase/config.js`
 
-### Code Splitting
+4. **Start the dev server**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```sh
+   npm start
+   ```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📂 Project Structure
 
-### Making a Progressive Web App
+```
+src/
+├── App.js                 # Root component, routing & auth listener
+├── components/            # Reusable UI components
+│   ├── Header.js          # Navigation bar & logout
+│   ├── TransactionForm.js # Add/Edit transaction form
+│   ├── TransactionList.js # Displays list of transactions
+│   ├── Balance.js         # Shows current balance
+│   └── ...                
+├── pages/                 # Page-level components (routes)
+│   ├── LoginPage.js       # Sign-in & sign-up forms
+│   ├── Dashboard.js       # Main app view after login
+│   └── NotFound.js        # 404 fallback
+├── firebase/              # Firebase setup & helpers
+│   ├── config.js          # Firebase SDK initialization
+│   ├── auth.js            # Auth helper functions
+│   └── firestore.js       # Firestore CRUD wrappers
+└── index.js               # Application entry point
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🔍 How It Works
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **App Initialization**
 
-### Deployment
+   * `App.js` listens for Firebase auth state changes.
+   * Redirects to **LoginPage** or **Dashboard** based on user status.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. **Authentication**
 
-### `npm run build` fails to minify
+   * Sign-up and login handled in `pages/LoginPage.js` using `auth.js` helpers.
+   * On success, user is routed to the dashboard.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. **Dashboard**
+
+   * Composed of `Header`, `Balance`, `TransactionForm`, and `TransactionList`.
+   * `firestore.js` provides real-time listeners to sync transactions.
+
+4. **Transactions**
+
+   * **Add/Edit:** `TransactionForm.js` collects data and calls Firestore API.
+   * **List & Delete:** `TransactionList.js` shows all records with delete option.
+   * Balance auto-updates by summing incomes and expenses.
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m "Add awesome feature"`)
+4. Push to your fork (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**. See [LICENSE](../LICENSE) for details.
